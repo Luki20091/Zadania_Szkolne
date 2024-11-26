@@ -1,0 +1,53 @@
+﻿<Window x:Class="ZadanieLista.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Lista Gier" Height="450" Width="800">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Width="300" Margin="10">
+            <TextBlock Text="Zarządzaj grami" FontWeight="Bold" FontSize="16"/>
+            <TextBox Name="TitleTextBox" Margin="5" Text="Tytuł" GotFocus="TextBox_GotFocus" />
+            <TextBox Name="YearTextBox" Margin="5" Text="Rok produkcji" GotFocus="TextBox_GotFocus" />
+            <ComboBox Name="TypeComboBox" Margin="5" SelectedIndex="0">
+                <ComboBoxItem Content="RPG"/>
+                <ComboBoxItem Content="Akcja"/>
+                <ComboBoxItem Content="Przygoda"/>
+                <ComboBoxItem Content="Strategia"/>
+                <ComboBoxItem Content="Symulacja"/>
+                <ComboBoxItem Content="Układanka"/>
+                <ComboBoxItem Content="Sport"/>
+                <ComboBoxItem Content="Inne"/>
+            </ComboBox>
+            <Button Content="Dodaj" Click="AddButton_Click" Margin="5"/>
+            <Button Content="Edytuj" Click="EditButton_Click" Margin="5"/>
+            <Button Content="Usuń" Click="DeleteButton_Click" Margin="5"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <ListView Name="GamesListView" SelectionChanged="GamesListView_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Tytuł" DisplayMemberBinding="{Binding Title}" />
+                            <GridViewColumn Header="Rok produkcji" DisplayMemberBinding="{Binding Year}" />
+                            <GridViewColumn Header="Typ" DisplayMemberBinding="{Binding Type}" />
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Margin" Value="0,2,0,2" />
+                            <Setter Property="Padding" Value="5" />
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightGreen" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>
+                <TextBlock Name="NoRecordsTextBlock" Text="Lista nie zawiera rekordów." Visibility="Collapsed" HorizontalAlignment="Center" Margin="5" />
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

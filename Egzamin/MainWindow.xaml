@@ -1,0 +1,165 @@
+﻿<Window x:Class="Egzamin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Wprowadzenie danych do paszportu. Wykonał: 00000000000"
+        Width="800" Height="450"
+        MinWidth="600" MinHeight="350"
+        Background="#5F9EA0"
+        FontFamily="Calibri" FontSize="16">
+
+    <Window.Resources>
+        <Style x:Key="LabelTextBlock" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style x:Key="InputTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style x:Key="EyeColorRadioButton" TargetType="RadioButton">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style x:Key="GroupBoxStyle" TargetType="GroupBox">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
+
+        <Style x:Key="MainButton" TargetType="Button">
+            <Setter Property="MinWidth" Value="160"/>
+            <Setter Property="MinHeight" Value="45"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       Style="{StaticResource LabelTextBlock}"
+                       Margin="0,0,0,5"
+                       Text="Numer"/>
+            <TextBox Grid.Row="0"
+                     Grid.Column="2"
+                     x:Name="txtNumer"
+                     Style="{StaticResource InputTextBox}"
+                     LostFocus="TxtNumer_LostFocus"/>
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Style="{StaticResource LabelTextBlock}"
+                       Margin="0,15,0,5"
+                       Text="Imię"/>
+            <TextBox Grid.Row="1"
+                     Grid.Column="2"
+                     x:Name="txtImie"
+                     Style="{StaticResource InputTextBox}"/>
+
+            <TextBlock Grid.Row="2"
+                       Grid.Column="0"
+                       Style="{StaticResource LabelTextBlock}"
+                       Margin="0,15,0,5"
+                       Text="Nazwisko"/>
+            <TextBox Grid.Row="2"
+                     Grid.Column="2"
+                     x:Name="txtNazwisko"
+                     Style="{StaticResource InputTextBox}"/>
+
+            <GroupBox Grid.Row="3"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="3"
+                      Header="Kolor oczu"
+                      Style="{StaticResource GroupBoxStyle}">
+                <StackPanel>
+                    <RadioButton x:Name="rbNiebieskie"
+                                 Content="niebieskie"
+                                 IsChecked="True"
+                                 Style="{StaticResource EyeColorRadioButton}"/>
+                    <RadioButton x:Name="rbZielone"
+                                 Content="zielone"
+                                 Style="{StaticResource EyeColorRadioButton}"/>
+                    <RadioButton x:Name="rbPiwne"
+                                 Content="piwne"
+                                 Style="{StaticResource EyeColorRadioButton}"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            
+            <Image x:Name="imgZdjecie"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="5"
+                    Height="180"
+                    MinHeight="180"/>
+
+            
+            <Image x:Name="imgOdcisk"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Margin="5"
+                    Height="180"
+                    MinHeight="180"/>
+
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    x:Name="btnOK"
+                    Content="OK"
+                    Style="{StaticResource MainButton}"
+                    Click="BtnOK_Click"/>
+        </Grid>
+    </Grid>
+</Window>
